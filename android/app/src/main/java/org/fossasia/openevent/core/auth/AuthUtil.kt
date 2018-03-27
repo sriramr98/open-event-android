@@ -35,7 +35,7 @@ object AuthUtil {
     private var authenticator: Authenticator? = null
 
     @JvmStatic
-    val authorization: String
+    val authorization: String?
         get() = formatToken(token)
 
     private val token: String?
