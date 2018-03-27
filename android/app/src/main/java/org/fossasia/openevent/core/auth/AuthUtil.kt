@@ -36,7 +36,7 @@ object AuthUtil {
 
     @JvmStatic
     val authorization: String
-        get() = formatToken(token!!)
+        get() = formatToken(token)
 
     private val token: String?
         get() = SharedPreferencesUtil.getString(ConstantStrings.TOKEN, null)
@@ -86,7 +86,7 @@ object AuthUtil {
         return authenticator as Authenticator
     }
 
-    private fun formatToken(token: String): String {
+    private fun formatToken(token: String?): String {
         return String.format("JWT $token")
     }
 
@@ -99,11 +99,7 @@ object AuthUtil {
     }
 
     private fun showProgressBar(progressBar: ProgressBar, show: Boolean) {
-        if (show) {
-            progressBar.visibility = View.VISIBLE
-        } else {
-            progressBar.visibility = View.GONE
-        }
+        if (show) progressBar.visibility = View.VISIBLE else progressBar.visibility = View.GONE
     }
 
     private fun showMessage(@StringRes id: Int) {
