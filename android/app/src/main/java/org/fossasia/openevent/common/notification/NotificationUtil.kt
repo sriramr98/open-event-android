@@ -17,14 +17,12 @@ import timber.log.Timber
 object NotificationUtil {
 
     private fun onSuccess(session: Session) {
-        Timber.d("Created notification for Session %d %s at time %s",
-                session.id, session.title, session.startsAt)
+        Timber.d("Created notification for Session ${session.id} ${session.title} at time ${session.startsAt}")
     }
 
     private fun onError(throwable: Throwable, session: Session) {
         Timber.e(throwable)
-        Timber.e("Error creating Date for Session %ld %s at time %s",
-                session.id, session.title, session.startsAt)
+        Timber.e("Error creating Date for Session ${session.id} ${session.title} at time ${session.startsAt}")
     }
 
     @JvmStatic

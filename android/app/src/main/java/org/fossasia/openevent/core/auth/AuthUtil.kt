@@ -87,7 +87,7 @@ object AuthUtil {
     }
 
     private fun formatToken(token: String): String {
-        return String.format("JWT %s", token)
+        return String.format("JWT $token")
     }
 
     @JvmStatic
