@@ -17,23 +17,23 @@ import org.fossasia.openevent.config.ConfigStrategy
  */
 class EventBusStrategy : ConfigStrategy {
 
-    private var eventBus: Bus? = null
+    var eventBus: Bus? = null
+        get() {
+            if (field == null) {
+                field = Bus()
+            }
+            return field
+        }
+
     private val handler: Handler = Handler(Looper.getMainLooper())
 
-    fun getEventBus(): Bus {
-        if (eventBus == null) {
-            eventBus = Bus()
-        }
-        return eventBus as Bus
-    }
-
     override fun configure(context: Context): Boolean {
-        getEventBus().register(context)
+        eventBus?.register(context)
         return false
     }
 
     fun postEventOnUIThread(event: Any) {
-        handler.post { getEventBus().post(event) }
+        handler.post { eventBus?.post(event) }
     }
 
 }

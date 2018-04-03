@@ -85,7 +85,7 @@ object Utils {
             if (isBaseUrlEmpty) {
                 swipeRefreshLayout.isEnabled = false
             } else {
-                StrategyRegistry.instance.eventBusStrategy?.getEventBus()?.register(`object`)
+                StrategyRegistry.instance.eventBusStrategy?.eventBus?.register(`object`)
                 swipeRefreshLayout.setOnRefreshListener(onRefreshListener)
             }
         }
@@ -93,7 +93,7 @@ object Utils {
         @JvmStatic
         fun unregisterIfUrlValid(`object`: Any) {
             if (!isBaseUrlEmpty) {
-                StrategyRegistry.instance.eventBusStrategy?.getEventBus()?.unregister(`object`)
+                StrategyRegistry.instance.eventBusStrategy?.eventBus?.unregister(`object`)
             }
         }
 

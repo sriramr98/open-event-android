@@ -347,8 +347,8 @@ class RealmDataRepository private constructor(val realmInstance: Realm) {
                     .findFirst()?.isBookmarked = bookmark
 
             StrategyRegistry.instance
-                    .eventBusStrategy!!
-                    .postEventOnUIThread(BookmarkChangedEvent())
+                    .eventBusStrategy
+                    ?.postEventOnUIThread(BookmarkChangedEvent())
             realm1.commitTransaction()
 
             realm1.close()
